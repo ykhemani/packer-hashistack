@@ -6,3 +6,9 @@ crash.log
 
 # For built boxes
 *.box
+
+# discard directory
+discard/
+
+# Any zip files
+files/*zip
