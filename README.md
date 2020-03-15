@@ -27,11 +27,11 @@ Download the Oracle Instant Client [zip file](https://download.oracle.com/otn_so
 Set the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` environment variables. These credentials should have the ability to create AMI's.
 
 ## Files
-[variables.pkr.hcl](blob/master/variables.pkr.hcl) contains the [variables](https://packer.io/docs/configuration/from-1.5/variables.html) needed for our Packer run. Each has a sane default with the exception of `owner`. You can override the default by passing it via the `-var` command line argument or via a `.pkrvars.hcl` file. Please see the Packer documentation on [Input Variables](https://packer.io/docs/configuration/from-1.5/variables.html) for more information.
+[variables.pkr.hcl](variables.pkr.hcl) contains the [variables](https://packer.io/docs/configuration/from-1.5/variables.html) needed for our Packer run. Each has a sane default with the exception of `owner`. You can override the default by passing it via the `-var` command line argument or via a `.pkrvars.hcl` file. Please see the Packer documentation on [Input Variables](https://packer.io/docs/configuration/from-1.5/variables.html) for more information.
 
-[amazon-ebs.pkr.hcl](blob/master/amazon-ebs.pkr.hcl) contains the code for building an [Amazon Machine Image (AMI)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html) on AWS. This is the only machine image that this repository currently builds.
+[amazon-ebs.pkr.hcl](amazon-ebs.pkr.hcl) contains the code for building an [Amazon Machine Image (AMI)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html) on AWS. This is the only machine image that this repository currently builds.
 
-[builders.pkr.hcl](blob/master/builders.pkr.hcl) contains the builds and provisioner definitions. If you wanted to use the Open Source Vault and Consul binaries, or add or remove any resources from the image build, you could do so by modifying this file.
+[builders.pkr.hcl](builders.pkr.hcl) contains the builds and provisioner definitions. If you wanted to use the Open Source Vault and Consul binaries, or add or remove any resources from the image build, you could do so by modifying this file.
 
 ## How to use
 
