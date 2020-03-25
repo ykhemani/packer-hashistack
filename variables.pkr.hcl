@@ -81,12 +81,18 @@ variable "oracle_version" {
   description = "Oraclient client library version."
   default     = "19.6"
 }
+
 variable "oracle_plugin_version" {
   type        = string
   description = "Vault Oracle Plugin version."
   default     = "0.1.6"
 }
 
+variable "venafi_plugin_version" {
+  type        = string
+  description = "Vault Venafi Plugin version."
+  default     = "0.6.2+743"
+}
 variable "os" {
   type        = string
   description = "OS."

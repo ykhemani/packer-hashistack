@@ -28,6 +28,7 @@ source "amazon-ebs" "hashistack" {
     packer_version      = var.packer_version
     oracle_version      = var.oracle_version
     vault_oracle_plugin = var.oracle_plugin_version
+    vault_venafi_plugin = var.venafi_plugin_version
     Owner               = var.owner
   }
 }

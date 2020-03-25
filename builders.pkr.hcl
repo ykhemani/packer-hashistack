@@ -32,6 +32,10 @@ build {
     destination = "/tmp/instantclient-basic-linux.x64-19.6.0.0.0dbru.zip"
   }
 
+  provisioner "file" {
+    source      = "files/venafi-pki-backend_v0.6.2+743_linux.zip"
+    destination = "/tmp/venafi-pki-backend_v0.6.2+743_linux.zip"
+  }
   provisioner "shell" {
     inline = [
     "sudo bash /tmp/hashi_install.sh ${var.hashi_download_dir} ${var.bin_dir}     ${var.hashi_base_url} vault                        ${var.vault_version} ent",
@@ -42,7 +46,7 @@ build {
     "sudo bash /tmp/hashi_install.sh ${var.hashi_download_dir} ${var.plugins_dir} ${var.hashi_base_url} vault-plugin-database-oracle ${var.oracle_plugin_version}",
     "sudo /usr/local/bin/vault -autocomplete-install",
     "sudo setcap cap_ipc_lock=+ep /usr/local/bin/vault",
-    "sudo setcap cap_ipc_lock=+ep /data/vault/plugins/vault-plugin-database-oracle",
+    "sudo setcap cap_ipc_lock=+ep ${var.plugins_dir}/vault-plugin-database-oracle",
     "sudo useradd --system --home /etc/vault.d --shell /bin/false vault",
     "sudo mkdir /etc/vault.d",
     "sudo touch /etc/vault.d/vault.hcl",
@@ -60,7 +64,10 @@ build {
     "sudo mv /tmp/instantclient-basic-linux.x64-19.6.0.0.0dbru.zip ${var.oracle_download_dir}/",
     "sudo unzip -d ${var.oracle_client_dir} ${var.oracle_download_dir}/instantclient-basic-linux.x64-19.6.0.0.0dbru.zip",
     "echo /usr/local/instantclient_19_6 | sudo tee -a /etc/ld.so.conf.d/oracle-instantclient.conf",
-    "sudo ldconfig"
+    "sudo ldconfig",
+    "sudo mv /tmp/venafi-pki-backend_v0.6.2+743_linux.zip ${var.hashi_download_dir}",
+    "sudo unzip -d ${var.plugins_dir} ${var.hashi_download_dir}/venafi-pki-backend_v0.6.2+743_linux.zip",
+    "sudo setcap cap_ipc_lock=+ep ${var.plugins_dir}/venafi-pki-backend"
     ]
   }
 
