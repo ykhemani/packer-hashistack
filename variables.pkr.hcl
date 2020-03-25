@@ -76,6 +76,18 @@ variable "packer_version" {
   default     = "1.5.4"
 }
 
+variable "consul-template_version" {
+  type        = string
+  description = "HashiCorp Consul-Template version."
+  default     = "0.24.1"
+}
+
+variable "envconsul_version" {
+  type        = string
+  description = "HashiCorp Envconsul version."
+  default     = "0.9.2"
+}
+
 variable "oracle_version" {
   type        = string
   description = "Oraclient client library version."

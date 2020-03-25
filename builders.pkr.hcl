@@ -36,6 +36,7 @@ build {
     source      = "files/venafi-pki-backend_v0.6.2+743_linux.zip"
     destination = "/tmp/venafi-pki-backend_v0.6.2+743_linux.zip"
   }
+
   provisioner "shell" {
     inline = [
     "sudo bash /tmp/hashi_install.sh ${var.hashi_download_dir} ${var.bin_dir}     ${var.hashi_base_url} vault                        ${var.vault_version} ent",
@@ -43,6 +44,8 @@ build {
     "sudo bash /tmp/hashi_install.sh ${var.hashi_download_dir} ${var.bin_dir}     ${var.hashi_base_url} nomad                        ${var.nomad_version}",
     "sudo bash /tmp/hashi_install.sh ${var.hashi_download_dir} ${var.bin_dir}     ${var.hashi_base_url} terraform                    ${var.terraform_version}",
     "sudo bash /tmp/hashi_install.sh ${var.hashi_download_dir} ${var.bin_dir}     ${var.hashi_base_url} packer                       ${var.packer_version}",
+    "sudo bash /tmp/hashi_install.sh ${var.hashi_download_dir} ${var.bin_dir}     ${var.hashi_base_url} envconsul                    ${var.envconsul_version}",
+    "sudo bash /tmp/hashi_install.sh ${var.hashi_download_dir} ${var.bin_dir}     ${var.hashi_base_url} consul-template              ${var.consul-template_version}",
     "sudo bash /tmp/hashi_install.sh ${var.hashi_download_dir} ${var.plugins_dir} ${var.hashi_base_url} vault-plugin-database-oracle ${var.oracle_plugin_version}",
     "sudo /usr/local/bin/vault -autocomplete-install",
     "sudo setcap cap_ipc_lock=+ep /usr/local/bin/vault",
