@@ -8,7 +8,7 @@ build {
               "sleep 30",
               "sudo apt-get update",
               "sudo apt-get upgrade -y",
-              "sudo apt-get install -y gnupg openssl jq unzip htop"
+              "sudo apt-get install -y gnupg openssl jq unzip htop ldap-utils"
              ]
   }
 

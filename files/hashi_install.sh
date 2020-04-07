@@ -12,8 +12,8 @@ beta=$7
 
 function usage() {
   echo "Usage: $0 <download directory> <install directory> <hashi base url> <software> <version> <ent> <beta>"
-  echo " e.g.: $0 /data/src/hashicorp /usr/local/bin https://releases.hashicorp.com vault 1.3.1 ent"
-  echo " e.g.: $0 /data/src/hashicorp /usr/local/bin https://releases.hashicorp.com consul 1.7.0 \"\" beta2"
+  echo " e.g.: $0 /data/src/hashicorp /usr/local/bin https://releases.hashicorp.com vault 1.4.0 ent"
+  echo " e.g.: $0 /data/src/hashicorp /usr/local/bin https://releases.hashicorp.com consul 1.7.2 \"\" beta2"
   echo " e.g.: $0 /data/src/hashicorp /usr/local/bin https://releases.hashicorp.com nomad 0.10.2"
   echo " e.g.: $0 /data/src/hashicorp /data/vault/plugins https://releases.hashicorp.com vault-plugin-database-oracle 0.1.6"
 }
