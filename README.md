@@ -3,7 +3,7 @@
 This [Packer](https://packer.io/) configuration allows you to prepare machine images that contain the following [HashiCorp](https://www.hashicorp.com) tools.
 * [Vault](https://vaultproject.io) 1.4.0 Enterprise
 * [Consul](https://consul.io) 1.7.2 Enterprise
-* [Nomad](https://nomadproject.io) 0.10.5
+* [Nomad](https://nomadproject.io) 0.11.0
 * [Terraform](https://terraform.io) 0.12.24
 * [Packer](https://packer.io) 1.5.5
 

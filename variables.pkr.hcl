@@ -61,7 +61,7 @@ variable "consul_version" {
 variable "nomad_version" {
   type        = string
   description = "HashiCorp Nomad version."
-  default     = "0.10.5"
+  default     = "0.11.0"
 }
 
 variable "terraform_version" {
