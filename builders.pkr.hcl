@@ -8,7 +8,7 @@ build {
               "sleep 30",
               "sudo apt-get update",
               "sudo apt-get upgrade -y",
-              "sudo apt-get install -y gnupg openssl jq unzip htop ldap-utils"
+              "sudo apt-get install -y gnupg openssl jq unzip htop ldap-utils awscli"
              ]
   }
 
@@ -58,9 +58,9 @@ build {
     "sudo /usr/local/bin/consul -autocomplete-install",
     "sudo useradd --system --home /etc/consul.d --shell /bin/false consul",
     "sudo mkdir /etc/consul.d",
-    "sudo touch /etc/consul.d/consul.json",
+    "sudo touch /etc/consul.d/consul.hcl",
     "sudo chown -R consul:consul /etc/consul.d",
-    "sudo chmod 640 /etc/consul.d/consul.json",
+    "sudo chmod 640 /etc/consul.d/consul.hcl",
     "sudo mv /tmp/vault.service /etc/systemd/system/vault.service",
     "sudo mv /tmp/consul.service /etc/systemd/system/consul.service",
     "sudo mkdir -p ${var.oracle_download_dir}",
