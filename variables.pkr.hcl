@@ -97,7 +97,7 @@ variable "oracle_version" {
 variable "oracle_plugin_version" {
   type        = string
   description = "Vault Oracle Plugin version."
-  default     = "0.1.6"
+  default     = "0.2.1"
 }
 
 variable "venafi_plugin_version" {
@@ -122,3 +122,8 @@ variable "owner" {
   description = "Owner, will be used in tag for image."
   default     = "hashistack"
 }
+
+#variable "aws_kms_key_id" {
+#  type        = string
+#  description = "ARN for KMS Key ID to use for encrypting volume."
+#}

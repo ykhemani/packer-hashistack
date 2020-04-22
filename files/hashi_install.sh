@@ -11,10 +11,12 @@ enterprise=$6
 beta=$7
 
 function usage() {
+  echo "Download and install Hashi Tools."
+  echo ""
   echo "Usage: $0 <download directory> <install directory> <hashi base url> <software> <version> <ent> <beta>"
   echo " e.g.: $0 /data/src/hashicorp /usr/local/bin https://releases.hashicorp.com vault 1.4.0 ent"
-  echo " e.g.: $0 /data/src/hashicorp /usr/local/bin https://releases.hashicorp.com consul 1.7.2 \"\" beta2"
-  echo " e.g.: $0 /data/src/hashicorp /usr/local/bin https://releases.hashicorp.com nomad 0.10.2"
+  echo " e.g.: $0 /data/src/hashicorp /usr/local/bin https://releases.hashicorp.com consul latest \"\" beta2"
+  echo " e.g.: $0 /data/src/hashicorp /usr/local/bin https://releases.hashicorp.com nomad"
   echo " e.g.: $0 /data/src/hashicorp /data/vault/plugins https://releases.hashicorp.com vault-plugin-database-oracle 0.1.6"
 }
 
@@ -41,9 +43,6 @@ then
 elif [ "${software}" == "" ]
 then
   error=1
-elif [ "${version}" == "" ]
-then
-  error=1
 fi
 
 if [ "${error}" != "0" ]
@@ -54,17 +53,25 @@ then
   exit ${error}
 fi
 
-if [ "${enterprise}" != "" ]
+if [ "${version}" == "" ] || [ "${version}" == "latest" ]
 then
-  enterprise="+${enterprise}"
+  echo "getting latest ${software} version ${enterprise} ${beta}"
+  url=$(curl -sL ${hashi_base_url}/${software}/index.json | jq -r '.versions[].builds[].url' | egrep "${software}_[0-9]\.[0-9]{1,2}\.[0-9]{1,2}[\+]?${enterprise}${beta}_linux.*amd64" | sort -V | tail -1)
+else
+  if [ "${enterprise}" != "" ]
+  then
+    enterprise="+${enterprise}"
+  fi
+
+  if [ "${beta}" != "" ]
+  then
+    beta="-${beta}"
+  fi
+  url=${hashi_base_url}/${software}/${version}${enterprise}${beta}/${software}_${version}${enterprise}${beta}_linux_amd64.zip
 fi
 
-if [ "${beta}" != "" ]
-then
-  beta="-${beta}"
-fi
+echo "Download URL is $url"
 
-url=${hashi_base_url}/${software}/${version}${enterprise}${beta}/${software}_${version}${enterprise}${beta}_linux_amd64.zip
 mkdir -p ${hashi_download_dir} ${install_dir} && \
   cd ${hashi_download_dir} && \
   wget --quiet -O ${software}.zip "${url}" && \

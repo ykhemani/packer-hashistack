@@ -6,15 +6,17 @@ This [Packer](https://packer.io/) configuration allows you to prepare machine im
 * [Nomad](https://nomadproject.io) 0.11.0
 * [Terraform](https://terraform.io) 0.12.24
 * [Packer](https://packer.io) 1.5.5
+* [Consul-Template](https://github.com/hashicorp/consul-template) 0.24.1
+* [envconsul](https://github.com/hashicorp/envconsul) 0.9.2
 
 It also places:
-* [Vault Oracle Database Secrets Engine](https://www.vaultproject.io/docs/secrets/databases/oracle/) plugin version 0.1.6.
+* [Vault Oracle Database Secrets Engine](https://www.vaultproject.io/docs/secrets/databases/oracle/) plugin version 0.2.1.
 * [Oracle Instant Client 19.6](https://www.oracle.com/database/technologies/instant-client/linux-x86-64-downloads.html).
 * [Vault Venafi PKI Secrets Engine](https://github.com/Venafi/vault-pki-backend-venafi) plugin version 0.6.2+743.
 
 The resulting image provides the foundation for you to run one or some of these tools.
 
-This iteration builds on the [Ubuntu](https://ubuntu.com) 18.04 image from [Canonical](https://canonical.com/). It places systemd scripts for Consul and Vault, but does not set either to start automatically on the resulting image. This provides the foundational components for a HashiStack, but does not dictate how you'll use the image.
+This iteration builds on the [Ubuntu](https://ubuntu.com) 18.04 image from [Canonical](https://canonical.com/). It places systemd scripts for Consul, Nomad and Vault, but does not set them to start automatically on the resulting image. This provides the foundational components for a HashiStack, but does not dictate how you'll use the image.
 
 ## Prequisites
 
