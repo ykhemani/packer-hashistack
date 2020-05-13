@@ -37,10 +37,10 @@ build {
     destination = "/tmp/instantclient-basic-linux.x64-19.6.0.0.0dbru.zip"
   }
 
-  provisioner "file" {
-    source      = "files/venafi-pki-backend_v0.6.2+743_linux.zip"
-    destination = "/tmp/venafi-pki-backend_v0.6.2+743_linux.zip"
-  }
+  // provisioner "file" {
+  //   source      = "files/venafi-pki-backend_v0.6.2+743_linux.zip"
+  //   destination = "/tmp/venafi-pki-backend_v0.6.2+743_linux.zip"
+  // }
 
   provisioner "shell" {
     inline = [
@@ -65,7 +65,7 @@ build {
     inline = [
       "sudo /usr/local/bin/consul -autocomplete-install",
       "sudo useradd --system --home /etc/consul.d --shell /bin/false consul",
-      "sudo mkdir /etc/consul.d",
+      "sudo mkdir -p /etc/consul.d",
       "sudo touch /etc/consul.d/consul.hcl",
       "sudo chown -R consul:consul /etc/consul.d",
       "sudo chmod 640 /etc/consul.d/consul.hcl",
@@ -77,7 +77,7 @@ build {
     inline = [
       "sudo /usr/local/bin/nomad -autocomplete-install",
       "sudo useradd --system --home /etc/nomad.d --shell /bin/false nomad",
-      "sudo mkdir /etc/nomad.d",
+      "sudo mkdir -p /etc/nomad.d",
       "sudo touch /etc/nomad.d/nomad.hcl",
       "sudo chown -R nomad:nomad /etc/nomad.d",
       "sudo chmod 640 /etc/nomad.d/nomad.hcl",
@@ -109,11 +109,11 @@ build {
     ]
   }
 
-  provisioner "shell" {
-    inline = [
-      "sudo mv /tmp/venafi-pki-backend_v0.6.2+743_linux.zip ${var.hashi_download_dir}",
-      "sudo unzip -d ${var.plugins_dir} ${var.hashi_download_dir}/venafi-pki-backend_v0.6.2+743_linux.zip",
-      "sudo setcap cap_ipc_lock=+ep ${var.plugins_dir}/venafi-pki-backend"
-    ]
-  }
+  // provisioner "shell" {
+  //   inline = [
+  //     "sudo mv /tmp/venafi-pki-backend_v0.6.2+743_linux.zip ${var.hashi_download_dir}",
+  //     "sudo unzip -d ${var.plugins_dir} ${var.hashi_download_dir}/venafi-pki-backend_v0.6.2+743_linux.zip",
+  //     "sudo setcap cap_ipc_lock=+ep ${var.plugins_dir}/venafi-pki-backend"
+  //   ]
+  // }
 }

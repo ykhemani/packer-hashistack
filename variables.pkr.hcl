@@ -49,19 +49,19 @@ variable "hashi_base_url" {
 variable "vault_version" {
   type        = string
   description = "HashiCorp Vault version."
-  default     = "1.4.0"
+  default     = "1.4.1"
 }
 
 variable "consul_version" {
   type        = string
   description = "HashiCorp Consul version."
-  default     = "1.7.2"
+  default     = "1.7.3"
 }
 
 variable "nomad_version" {
   type        = string
   description = "HashiCorp Nomad version."
-  default     = "0.11.0"
+  default     = "0.11.1"
 }
 
 variable "terraform_version" {
@@ -73,19 +73,19 @@ variable "terraform_version" {
 variable "packer_version" {
   type        = string
   description = "HashiCorp Packer version."
-  default     = "1.5.5"
+  default     = "1.5.6"
 }
 
 variable "consul-template_version" {
   type        = string
   description = "HashiCorp Consul-Template version."
-  default     = "0.24.1"
+  default     = "0.25.0"
 }
 
 variable "envconsul_version" {
   type        = string
   description = "HashiCorp Envconsul version."
-  default     = "0.9.2"
+  default     = "0.9.3"
 }
 
 variable "oracle_version" {
@@ -100,11 +100,12 @@ variable "oracle_plugin_version" {
   default     = "0.2.1"
 }
 
-variable "venafi_plugin_version" {
-  type        = string
-  description = "Vault Venafi Plugin version."
-  default     = "0.6.2+743"
-}
+// variable "venafi_plugin_version" {
+//   type        = string
+//   description = "Vault Venafi Plugin version."
+//   default     = "0.6.2+743"
+// }
+
 variable "os" {
   type        = string
   description = "OS."

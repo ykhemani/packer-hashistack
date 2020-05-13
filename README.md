@@ -12,7 +12,6 @@ This [Packer](https://packer.io/) configuration allows you to prepare machine im
 It also places:
 * [Vault Oracle Database Secrets Engine](https://www.vaultproject.io/docs/secrets/databases/oracle/) plugin version 0.2.1.
 * [Oracle Instant Client 19.6](https://www.oracle.com/database/technologies/instant-client/linux-x86-64-downloads.html).
-* [Vault Venafi PKI Secrets Engine](https://github.com/Venafi/vault-pki-backend-venafi) plugin version 0.6.2+743.
 
 The resulting image provides the foundation for you to run one or some of these tools.
 
