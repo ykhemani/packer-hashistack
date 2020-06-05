@@ -12,3 +12,5 @@ discard/
 
 # Any zip files
 files/*zip
+
+var.*

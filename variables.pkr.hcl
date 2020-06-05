@@ -49,7 +49,7 @@ variable "hashi_base_url" {
 variable "vault_version" {
   type        = string
   description = "HashiCorp Vault version."
-  default     = "1.4.1"
+  default     = "1.4.2"
 }
 
 variable "consul_version" {
@@ -61,13 +61,13 @@ variable "consul_version" {
 variable "nomad_version" {
   type        = string
   description = "HashiCorp Nomad version."
-  default     = "0.11.1"
+  default     = "0.11.2"
 }
 
 variable "terraform_version" {
   type        = string
   description = "HashiCorp Terraform version."
-  default     = "0.12.24"
+  default     = "0.12.26"
 }
 
 variable "packer_version" {
@@ -100,11 +100,11 @@ variable "oracle_plugin_version" {
   default     = "0.2.1"
 }
 
-// variable "venafi_plugin_version" {
-//   type        = string
-//   description = "Vault Venafi Plugin version."
-//   default     = "0.6.2+743"
-// }
+variable "venafi_plugin_version" {
+ type        = string
+ description = "Vault Venafi Plugin version."
+ default     = "0.6.2+743"
+}
 
 variable "os" {
   type        = string
@@ -124,7 +124,7 @@ variable "owner" {
   default     = "hashistack"
 }
 
-#variable "aws_kms_key_id" {
-#  type        = string
-#  description = "ARN for KMS Key ID to use for encrypting volume."
-#}
+variable "aws_kms_key_id" {
+  type        = string
+  description = "ARN for KMS Key ID to use for encrypting volume."
+}

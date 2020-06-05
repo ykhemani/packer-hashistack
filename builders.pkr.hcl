@@ -37,10 +37,10 @@ build {
     destination = "/tmp/instantclient-basic-linux.x64-19.6.0.0.0dbru.zip"
   }
 
-  // provisioner "file" {
-  //   source      = "files/venafi-pki-backend_v0.6.2+743_linux.zip"
-  //   destination = "/tmp/venafi-pki-backend_v0.6.2+743_linux.zip"
-  // }
+  provisioner "file" {
+    source      = "files/venafi-pki-backend_v0.6.2+743_linux.zip"
+    destination = "/tmp/venafi-pki-backend_v0.6.2+743_linux.zip"
+  }
 
   provisioner "shell" {
     inline = [
@@ -109,11 +109,11 @@ build {
     ]
   }
 
-  // provisioner "shell" {
-  //   inline = [
-  //     "sudo mv /tmp/venafi-pki-backend_v0.6.2+743_linux.zip ${var.hashi_download_dir}",
-  //     "sudo unzip -d ${var.plugins_dir} ${var.hashi_download_dir}/venafi-pki-backend_v0.6.2+743_linux.zip",
-  //     "sudo setcap cap_ipc_lock=+ep ${var.plugins_dir}/venafi-pki-backend"
-  //   ]
-  // }
+  provisioner "shell" {
+    inline = [
+      "sudo mv /tmp/venafi-pki-backend_v0.6.2+743_linux.zip ${var.hashi_download_dir}",
+      "sudo unzip -d ${var.plugins_dir} ${var.hashi_download_dir}/venafi-pki-backend_v0.6.2+743_linux.zip",
+      "sudo setcap cap_ipc_lock=+ep ${var.plugins_dir}/venafi-pki-backend"
+    ]
+  }
 }
