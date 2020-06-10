@@ -1,12 +1,16 @@
 ################################################################################
 # amazon-ebs
 
-source "amazon-ebs" "hashistack" {
-  ami_name                  = "hashistack-encrypted-{{timestamp}}"
+locals {
+  encrypted                 = var.encrypt_boot && var.aws_kms_key_id != "" ? "encrypted-" : ""
+}
+
+source amazon-ebs hashistack {
+  ami_name                  = "${var.prefix}-${local.encrypted}{{timestamp}}"
   region                    = var.aws_region
   instance_type             = var.aws_instance_type
-  encrypt_boot              = true
-  kms_key_id                = var.aws_kms_key_id
+  encrypt_boot              = var.encrypt_boot
+  kms_key_id                = var.encrypt_boot ? var.aws_kms_key_id : ""
   source_ami_filter {
     filters                 = {
       virtualization-type   = "hvm"
