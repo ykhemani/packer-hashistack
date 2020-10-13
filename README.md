@@ -1,13 +1,13 @@
 # packer-hashistack - HashiCorp Packer image for provisioning HashiStack (Terraform, Vault, Consul, Nomad, Packer)
 
 This [Packer](https://packer.io/) configuration allows you to prepare machine images that contain the following [HashiCorp](https://www.hashicorp.com) tools.
-* [Vault](https://vaultproject.io) 1.4.0 Enterprise
-* [Consul](https://consul.io) 1.7.2 Enterprise
-* [Nomad](https://nomadproject.io) 0.11.0
-* [Terraform](https://terraform.io) 0.12.24
-* [Packer](https://packer.io) 1.5.5
-* [Consul-Template](https://github.com/hashicorp/consul-template) 0.24.1
-* [envconsul](https://github.com/hashicorp/envconsul) 0.9.2
+* [Vault](https://vaultproject.io) 1.5.4 Enterprise
+* [Consul](https://consul.io) 1.8.4 Enterprise
+* [Nomad](https://nomadproject.io) 0.12.5 Enterprise
+* [Terraform](https://terraform.io) 0.12.29
+* [Packer](https://packer.io) 1.6.4
+* [Consul-Template](https://github.com/hashicorp/consul-template) 0.25.1
+* [envconsul](https://github.com/hashicorp/envconsul) 0.10.0
 
 It also places:
 * [Vault Oracle Database Secrets Engine](https://www.vaultproject.io/docs/secrets/databases/oracle/) plugin version 0.2.1.
