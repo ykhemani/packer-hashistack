@@ -33,13 +33,17 @@ build {
   }
 
   provisioner "file" {
-    source      = "files/instantclient-basic-linux.x64-19.6.0.0.0dbru.zip"
-    destination = "/tmp/instantclient-basic-linux.x64-19.6.0.0.0dbru.zip"
+    # via https://www.oracle.com/database/technologies/instant-client/linux-x86-64-downloads.html
+    #     https://download.oracle.com/otn_software/linux/instantclient/211000/instantclient-basic-linux.x64-21.1.0.0.0.zip
+    source      = "files/instantclient-basic-linux.x64-21.1.0.0.0.zip"
+    destination = "/tmp/instantclient.zip"
   }
 
   provisioner "file" {
-    source      = "files/venafi-pki-backend_v0.6.2+743_linux.zip"
-    destination = "/tmp/venafi-pki-backend_v0.6.2+743_linux.zip"
+    # via https://github.com/Venafi/vault-pki-backend-venafi/releases
+    #     https://github.com/Venafi/vault-pki-backend-venafi/releases/download/v0.8.3/venafi-pki-backend_v0.8.3_linux.zip
+    source      = "files/venafi-pki-backend_v0.8.3_linux.zip"
+    destination = "/tmp/venafi-pki-backend.zip"
   }
 
   provisioner "shell" {
@@ -52,7 +56,9 @@ build {
       "sudo bash /tmp/hashi_install.sh ${var.hashi_download_dir} ${var.bin_dir}     ${var.hashi_base_url} envconsul                    ${var.envconsul_version}",
       "sudo bash /tmp/hashi_install.sh ${var.hashi_download_dir} ${var.bin_dir}     ${var.hashi_base_url} consul-template              ${var.consul-template_version}",
       "sudo bash /tmp/hashi_install.sh ${var.hashi_download_dir} ${var.plugins_dir} ${var.hashi_base_url} vault-plugin-database-oracle ${var.oracle_plugin_version}",
-    ]
+      "sudo bash /tmp/hashi_install.sh ${var.hashi_download_dir} ${var.bin_dir}     ${var.hashi_base_url} boundary                     ${var.boundary_version}",
+      "sudo bash /tmp/hashi_install.sh ${var.hashi_download_dir} ${var.bin_dir}     ${var.hashi_base_url} waypoint                     ${var.waypoint_version}",
+   ]
   }
 
   provisioner "shell" {
@@ -102,17 +108,17 @@ build {
   provisioner "shell" {
     inline = [
       "sudo mkdir -p ${var.oracle_download_dir}",
-      "sudo mv /tmp/instantclient-basic-linux.x64-19.6.0.0.0dbru.zip ${var.oracle_download_dir}/",
-      "sudo unzip -d ${var.oracle_client_dir} ${var.oracle_download_dir}/instantclient-basic-linux.x64-19.6.0.0.0dbru.zip",
-      "echo /usr/local/instantclient_19_6 | sudo tee -a /etc/ld.so.conf.d/oracle-instantclient.conf",
+      "sudo mv /tmp/instantclient.zip ${var.oracle_download_dir}/",
+      "sudo unzip -d ${var.oracle_client_dir} ${var.oracle_download_dir}/instantclient.zip",
+      "echo /usr/local/instantclient_21_1 | sudo tee -a /etc/ld.so.conf.d/oracle-instantclient.conf",
       "sudo ldconfig"
     ]
   }
 
   provisioner "shell" {
     inline = [
-      "sudo mv /tmp/venafi-pki-backend_v0.6.2+743_linux.zip ${var.hashi_download_dir}",
-      "sudo unzip -d ${var.plugins_dir} ${var.hashi_download_dir}/venafi-pki-backend_v0.6.2+743_linux.zip",
+      "sudo mv /tmp/venafi-pki-backend.zip ${var.hashi_download_dir}",
+      "sudo unzip -d ${var.plugins_dir} ${var.hashi_download_dir}/venafi-pki-backend.zip",
       "sudo setcap cap_ipc_lock=+ep ${var.plugins_dir}/venafi-pki-backend"
     ]
   }
