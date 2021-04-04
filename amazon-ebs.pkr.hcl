@@ -5,7 +5,7 @@ locals {
   encrypted                 = var.encrypt_boot && var.aws_kms_key_id != "" ? "encrypted-" : ""
 }
 
-source amazon-ebs hashistack {
+source "amazon-ebs" "hashistack" {
   ami_name                  = "${var.prefix}-${local.encrypted}{{timestamp}}"
   region                    = var.aws_region
   instance_type             = var.aws_instance_type
@@ -30,6 +30,7 @@ source amazon-ebs hashistack {
     vault_version           =   var.vault_version
     consul_version          =   var.consul_version
     nomad_version           =   var.nomad_version
+    boundary_version        =   var.boundary_version
     terraform_version       =   var.terraform_version
     packer_version          =   var.packer_version
     consul-template_version =   var.consul-template_version
@@ -37,6 +38,16 @@ source amazon-ebs hashistack {
     oracle_version          =   var.oracle_version
     vault_oracle_plugin     =   var.oracle_plugin_version
     vault_venafi_plugin     =   var.venafi_plugin_version
-    Owner                   =   var.owner
+
+    owner                   =   var.owner
+    ttl                     =   var.ttl
+    se-region               =   var.se-region
+    purpose                 =   var.purpose
+    ttl                     =   var.ttl
+    hc-internet-facing      =   var.hc-internet-facing
+    creator                 =   var.creator
+    customer                =   var.customer
+    config-as-code          =   var.config-as-code
+    repo                    =   var.repo
   }
 }
