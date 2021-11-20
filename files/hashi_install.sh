@@ -72,8 +72,9 @@ fi
 
 echo "Download URL is $url"
 
-mkdir -p ${hashi_download_dir} ${install_dir} && \
-  cd ${hashi_download_dir} && \
+mkdir -p ${hashi_download_dir}/${software} ${install_dir} && \
+  cd ${hashi_download_dir}/${software} && \
   wget --quiet -O ${software}.zip "${url}" && \
-  unzip -q -d ${install_dir} ${software}.zip && \
+  unzip -q ${software}.zip && \
+  mv ${software} ${install_dir} && \
   cd -
