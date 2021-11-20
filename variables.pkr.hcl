@@ -3,7 +3,7 @@
 variable "aws_region" {
   type        = string
   description = "AWS Region in which to build image."
-  default     = "us-west-2"
+  default     = "us-east-1"
 }
 
 variable "aws_instance_type" {
@@ -65,55 +65,55 @@ variable "hashi_base_url" {
 variable "vault_version" {
   type        = string
   description = "HashiCorp Vault version."
-  default     = "1.7.0"
+  default     = "1.9.0"
 }
 
 variable "consul_version" {
   type        = string
   description = "HashiCorp Consul version."
-  default     = "1.9.4"
+  default     = "1.10.4"
 }
 
 variable "nomad_version" {
   type        = string
   description = "HashiCorp Nomad version."
-  default     = "1.0.4"
+  default     = "1.2.1"
 }
 
 variable "terraform_version" {
   type        = string
   description = "HashiCorp Terraform version."
-  default     = "0.14.9"
+  default     = "1.0.11"
 }
 
 variable "packer_version" {
   type        = string
   description = "HashiCorp Packer version."
-  default     = "1.7.1"
+  default     = "1.7.8"
 }
 
 variable "consul-template_version" {
   type        = string
   description = "HashiCorp Consul-Template version."
-  default     = "0.25.2"
+  default     = "0.27.2"
 }
 
 variable "envconsul_version" {
   type        = string
   description = "HashiCorp Envconsul version."
-  default     = "0.11.0"
+  default     = "0.12.1"
 }
 
 variable "boundary_version" {
   type        = string
   description = "HashiCorp Boundary version."
-  default     = "0.1.8"
+  default     = "0.7.1"
 }
 
 variable "waypoint_version" {
   type        = string
   description = "HashiCorp Waypoint version."
-  default     = "0.2.4"
+  default     = "0.6.2"
 }
 
 variable "oracle_version" {
@@ -125,13 +125,13 @@ variable "oracle_version" {
 variable "oracle_plugin_version" {
   type        = string
   description = "Vault Oracle Plugin version."
-  default     = "0.4.0"
+  default     = "0.4.2"
 }
 
 variable "venafi_plugin_version" {
- type        = string
- description = "Vault Venafi Plugin version."
- default     = "0.8.3"
+  type        = string
+  description = "Vault Venafi Plugin version."
+  default     = "0.9.1"
 }
 
 variable "os" {
