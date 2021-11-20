@@ -1,15 +1,32 @@
 build {
+  hcp_packer_registry {
+    bucket_name = "ubuntu-hashistack"
+    description = <<EOT
+This image is based on Ubuntu 18.04 and includes software HashiCorp, Docker, minikube, kubectl and other software.
+EOT
+  }
+
   sources = [
     "source.amazon-ebs.hashistack"
   ]
 
   provisioner "shell" {
     inline = [
-              "sleep 30",
-              "sudo apt-get update",
-              "sudo apt-get upgrade -y",
-              "sudo apt-get install -y gnupg openssl jq unzip htop ldap-utils awscli"
-             ]
+      "sleep 30",
+      "sudo apt-get update",
+      "sudo apt-get upgrade -y",
+      "sudo apt-get install -y ca-certificates apt-transport-https curl gnupg openssl lsb-release jq unzip htop ldap-utils awscli",
+      "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg",
+      "echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null",
+      "sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg",
+      "echo \"deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main\" | sudo tee /etc/apt/sources.list.d/kubernetes.list",
+      "sudo apt-get update",
+      "sudo apt-get install -y docker-ce docker-ce-cli containerd.io",
+      "sudo apt-get install -y kubectl",
+      "sudo curl -sLo /tmp/minikube_latest_amd64.deb https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb",
+      "sudo dpkg -i /tmp/minikube_latest_amd64.deb",
+      "sudo usermod -aG docker ubuntu"
+    ]
   }
 
   provisioner "file" {
@@ -34,15 +51,15 @@ build {
 
   provisioner "file" {
     # via https://www.oracle.com/database/technologies/instant-client/linux-x86-64-downloads.html
-    #     https://download.oracle.com/otn_software/linux/instantclient/211000/instantclient-basic-linux.x64-21.1.0.0.0.zip
-    source      = "files/instantclient-basic-linux.x64-21.1.0.0.0.zip"
+    #     https://download.oracle.com/otn_software/linux/instantclient/213000/instantclient-basic-linux.x64-21.3.0.0.0.zip
+    source      = "files/instantclient-basic-linux.x64-21.3.0.0.0.zip"
     destination = "/tmp/instantclient.zip"
   }
 
   provisioner "file" {
     # via https://github.com/Venafi/vault-pki-backend-venafi/releases
-    #     https://github.com/Venafi/vault-pki-backend-venafi/releases/download/v0.8.3/venafi-pki-backend_v0.8.3_linux.zip
-    source      = "files/venafi-pki-backend_v0.8.3_linux.zip"
+    #     https://github.com/Venafi/vault-pki-backend-venafi/releases/download/v0.9.1/venafi-pki-backend_v0.9.1_linux.zip
+    source      = "files/venafi-pki-backend_v0.9.1_linux.zip"
     destination = "/tmp/venafi-pki-backend.zip"
   }
 
@@ -58,7 +75,7 @@ build {
       "sudo bash /tmp/hashi_install.sh ${var.hashi_download_dir} ${var.plugins_dir} ${var.hashi_base_url} vault-plugin-database-oracle ${var.oracle_plugin_version}",
       "sudo bash /tmp/hashi_install.sh ${var.hashi_download_dir} ${var.bin_dir}     ${var.hashi_base_url} boundary                     ${var.boundary_version}",
       "sudo bash /tmp/hashi_install.sh ${var.hashi_download_dir} ${var.bin_dir}     ${var.hashi_base_url} waypoint                     ${var.waypoint_version}",
-   ]
+    ]
   }
 
   provisioner "shell" {
@@ -104,6 +121,21 @@ build {
       "sudo mv /tmp/vault.service /etc/systemd/system/vault.service"
     ]
   }
+
+  #   provisioner "file" {
+  #     source      = "files/consul.hcl"
+  #     destination = "/etc/consul.d/consul.hcl"
+  #   }
+  # 
+  #   provisioner "file" {
+  #     source      = "files/vault.hcl"
+  #     destination = "/etc/vault.d/vault.hcl"
+  #   }
+  # 
+  #   provisioner "file" {
+  #     source      = "files/nomad.hcl"
+  #     destination = "/etc/nomad.d/nomad.hcl"
+  #   }
 
   provisioner "shell" {
     inline = [
