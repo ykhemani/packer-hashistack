@@ -25,7 +25,7 @@ It places systemd scripts for Consul, Nomad and Vault, but does not set them to 
 
 ## Prequisites
 
-### [Packer 1.6.4](https://releases.hashicorp.com/packer/) or later.
+### [Packer 1.7.7](https://releases.hashicorp.com/packer/) or later.
 This Packer configuration is written in HCL and has been tested on Packer 1.7.7.
 
 ### [Oracle Instant Client 21.1](https://www.oracle.com/database/technologies/instant-client/linux-x86-64-downloads.html)
