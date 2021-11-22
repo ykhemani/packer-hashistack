@@ -18,6 +18,7 @@ It also includes:
 * [Docker Engine CE](https://www.docker.com/)
 * [minikube](https://minikube.sigs.k8s.io/docs/)
 * [kubectl](https://kubernetes.io/docs/tasks/tools/)
+* [Helm](https://helm.sh)
 
 The resulting image provides the foundation for you to run one or some of these tools.
 
