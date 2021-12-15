@@ -1,9 +1,9 @@
 # packer-hashistack - HashiCorp Packer image for provisioning HashiStack (Terraform, Vault, Consul, Nomad, Packer)
 
 This [Packer](https://packer.io/) configuration builds on top of the [Ubuntu](https://ubuntu.com) 18.04 image from [Canonical](https://canonical.com/) and includes the following [HashiCorp](https://www.hashicorp.com) software.
-* [Vault](https://vaultproject.io) 1.9.0 Enterprise
-* [Consul](https://consul.io) 1.10.4 Enterprise
-* [Nomad](https://nomadproject.io) 1.2.1 Enterprise
+* [Vault](https://vaultproject.io) 1.9.1 Enterprise
+* [Consul](https://consul.io) 1.11.1 Enterprise
+* [Nomad](https://nomadproject.io) 1.2.3 Enterprise
 * [Terraform](https://terraform.io) 1.0.11
 * [Packer](https://packer.io) 1.7.8
 * [Consul-Template](https://github.com/hashicorp/consul-template) 0.27.2
