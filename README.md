@@ -1,20 +1,17 @@
 # packer-hashistack - HashiCorp Packer image for provisioning HashiStack (Terraform, Vault, Consul, Nomad, Packer)
 
-This [Packer](https://packer.io/) configuration builds on top of the [Ubuntu](https://ubuntu.com) 18.04 image from [Canonical](https://canonical.com/) and includes the following [HashiCorp](https://www.hashicorp.com) software.
-* [Vault](https://vaultproject.io) 1.9.1 Enterprise
-* [Consul](https://consul.io) 1.11.1 Enterprise
-* [Nomad](https://nomadproject.io) 1.2.3 Enterprise
-* [Terraform](https://terraform.io) 1.0.11
-* [Packer](https://packer.io) 1.7.8
-* [Consul-Template](https://github.com/hashicorp/consul-template) 0.27.2
-* [envconsul](https://github.com/hashicorp/envconsul) 0.12.1
-* [Boundary](https://boundaryproject.io) 0.7.1
-* [Waypoint](https://waypointproject.io) 0.6.2
+This [Packer](https://packer.io/) configuration builds on top of the [Ubuntu](https://ubuntu.com) 20.04 image from [Canonical](https://canonical.com/) and includes the following [HashiCorp](https://www.hashicorp.com) software.
+* [Vault](https://vaultproject.io) Enterprise
+* [Consul](https://consul.io) Enterprise
+* [Nomad](https://nomadproject.io) Enterprise
+* [Terraform](https://terraform.io)
+* [Packer](https://packer.io)
+* [Consul-Template](https://github.com/hashicorp/consul-template)
+* [envconsul](https://github.com/hashicorp/envconsul)
+* [Boundary](https://boundaryproject.io)
+* [Waypoint](https://waypointproject.io)
 
 It also includes:
-* [Vault Oracle Database Secrets Engine](https://www.vaultproject.io/docs/secrets/databases/oracle/) plugin version 0.4.2
-* [Oracle Instant Client 21.1](https://www.oracle.com/database/technologies/instant-client/linux-x86-64-downloads.html).
-* [Vault Venafi PKI Secrets Engine](https://github.com/Venafi/vault-pki-backend-venafi) plugin version 0.9.1.
 * [Docker Engine CE](https://www.docker.com/)
 * [minikube](https://minikube.sigs.k8s.io/docs/)
 * [kubectl](https://kubernetes.io/docs/tasks/tools/)
@@ -26,11 +23,8 @@ It places systemd scripts for Consul, Nomad and Vault, but does not set them to 
 
 ## Prequisites
 
-### [Packer 1.7.7](https://releases.hashicorp.com/packer/) or later.
-This Packer configuration is written in HCL and has been tested on Packer 1.7.7.
-
-### [Oracle Instant Client 21.1](https://www.oracle.com/database/technologies/instant-client/linux-x86-64-downloads.html)
-Download the Oracle Instant Client [zip file](https://download.oracle.com/otn_software/linux/instantclient/211000/instantclient-basic-linux.x64-21.1.0.0.0.zip). You may be prompted to create or login into an Oracle account and accept the license agreement in order to download the Oracle Client. Once you download it, save it as `files/instantclient-basic-linux.x64-21.1.0.0.0.zip`.
+### [HashiCorp Packer](https://releases.hashicorp.com/packer/)
+This Packer configuration is written in HCL and has been tested on Packer 1.7.10.
 
 ### Environment variables
 Set your AWS access credentials (`AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` environment variables). These credentials should have the ability to create AMI's.

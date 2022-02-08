@@ -35,9 +35,6 @@ source "amazon-ebs" "hashistack" {
     packer_version          = var.packer_version
     consul-template_version = var.consul-template_version
     envconsul_version       = var.envconsul_version
-    oracle_version          = var.oracle_version
-    vault_oracle_plugin     = var.oracle_plugin_version
-    vault_venafi_plugin     = var.venafi_plugin_version
 
     owner              = var.owner
     ttl                = var.ttl
