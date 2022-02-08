@@ -45,3 +45,16 @@ EOT
       "echo 'complete -F __start_kubectl k' | sudo tee  -a /etc/bash.bashrc > /dev/null"
     ]
   }
+
+  provisioner "file" {
+    source      = "files/hashi_install.sh"
+    destination = "/tmp/hashi_install.sh"
+  }
+
+  provisioner "shell" {
+    inline = [
+      "sudo bash /tmp/hashi_install.sh ${var.hashi_download_dir} ${var.bin_dir}     ${var.hashi_base_url} envconsul                    ${var.envconsul_version}",
+    ]
+  }
+
+}

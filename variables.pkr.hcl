@@ -25,6 +25,25 @@ variable "aws_kms_key_id" {
 }
 
 ################################################################################
+
+variable "hashi_download_dir" {
+  type        = string
+  description = "The path where HashiCorp downloads will be saved."
+  default     = "/data/src/hashicorp"
+}
+
+variable "bin_dir" {
+  type        = string
+  description = "The path where binaries will be placed."
+  default     = "/usr/local/bin"
+}
+
+variable "hashi_base_url" {
+  type        = string
+  description = "The URL from which HashiCorp applications can be downloaded."
+  default     = "https://releases.hashicorp.com"
+}
+
 variable "vault_version" {
   type        = string
   description = "HashiCorp Vault version."
@@ -59,6 +78,12 @@ variable "consul-template_version" {
   type        = string
   description = "HashiCorp Consul-Template version."
   default     = "0.27.2"
+}
+
+variable "envconsul_version" {
+  type        = string
+  description = "HashiCorp Envconsul version."
+  default     = "0.12.1"
 }
 
 variable "boundary_version" {
