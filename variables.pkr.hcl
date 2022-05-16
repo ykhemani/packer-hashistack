@@ -47,19 +47,19 @@ variable "hashi_base_url" {
 variable "vault_version" {
   type        = string
   description = "HashiCorp Vault version."
-  default     = "1.10.3+ent"
+  default     = "1.10.3"
 }
 
 variable "consul_version" {
   type        = string
   description = "HashiCorp Consul version."
-  default     = "1.12.0+ent"
+  default     = "1.12.0"
 }
 
 variable "nomad_version" {
   type        = string
   description = "HashiCorp Nomad version."
-  default     = "1.3.0+ent"
+  default     = "1.3.0"
 }
 
 variable "terraform_version" {
