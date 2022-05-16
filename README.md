@@ -24,7 +24,7 @@ It places systemd scripts for Consul, Nomad and Vault, but does not set them to 
 ## Prequisites
 
 ### [HashiCorp Packer](https://releases.hashicorp.com/packer/)
-This Packer configuration is written in HCL and has been tested on Packer 1.7.10.
+This Packer configuration is written in HCL and has been tested on Packer 1.8.0.
 
 ### Environment variables
 Set your AWS access credentials (`AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` environment variables). These credentials should have the ability to create AMI's.

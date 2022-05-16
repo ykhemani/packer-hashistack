@@ -47,37 +47,37 @@ variable "hashi_base_url" {
 variable "vault_version" {
   type        = string
   description = "HashiCorp Vault version."
-  default     = "1.9.3+ent"
+  default     = "1.10.3+ent"
 }
 
 variable "consul_version" {
   type        = string
   description = "HashiCorp Consul version."
-  default     = "1.11.2+ent"
+  default     = "1.12.0+ent"
 }
 
 variable "nomad_version" {
   type        = string
   description = "HashiCorp Nomad version."
-  default     = "1.2.5+ent"
+  default     = "1.3.0+ent"
 }
 
 variable "terraform_version" {
   type        = string
   description = "HashiCorp Terraform version."
-  default     = "1.1.5"
+  default     = "1.1.9"
 }
 
 variable "packer_version" {
   type        = string
   description = "HashiCorp Packer version."
-  default     = "1.7.10"
+  default     = "1.8.0"
 }
 
 variable "consul-template_version" {
   type        = string
   description = "HashiCorp Consul-Template version."
-  default     = "0.27.2"
+  default     = "0.29.0"
 }
 
 variable "envconsul_version" {
@@ -89,13 +89,13 @@ variable "envconsul_version" {
 variable "boundary_version" {
   type        = string
   description = "HashiCorp Boundary version."
-  default     = "0.7.4"
+  default     = "0.8.0"
 }
 
 variable "waypoint_version" {
   type        = string
   description = "HashiCorp Waypoint version."
-  default     = "0.7.1"
+  default     = "0.8.1"
 }
 
 ################################################################################
@@ -103,13 +103,13 @@ variable "waypoint_version" {
 variable "os" {
   type        = string
   description = "OS."
-  default     = "ubuntu-bionic"
+  default     = "ubuntu-focal"
 }
 
 variable "os_version" {
   type        = string
   description = "OS Version."
-  default     = "18.04"
+  default     = "20.04"
 }
 
 variable "prefix" {
