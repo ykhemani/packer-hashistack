@@ -1,6 +1,6 @@
-# packer-hashistack - HashiCorp Packer image for provisioning HashiStack (Terraform, Vault, Consul, Nomad, Packer)
+# packer-hashistack - HashiCorp Packer image for provisioning the HashiStack
 
-This [Packer](https://packer.io/) configuration builds on top of the [Ubuntu](https://ubuntu.com) 20.04 image from [Canonical](https://canonical.com/) and includes the following [HashiCorp](https://www.hashicorp.com) software.
+This [Packer](https://packer.io/) configuration builds on top of the [Ubuntu](https://ubuntu.com) 22.04 (Jammy) image from [Canonical](https://canonical.com/) and includes the following [HashiCorp](https://www.hashicorp.com) software.
 * [Vault](https://vaultproject.io) Enterprise
 * [Consul](https://consul.io) Enterprise
 * [Nomad](https://nomadproject.io) Enterprise
@@ -19,18 +19,16 @@ It also includes:
 
 The resulting image provides the foundation for you to run one or some of these tools.
 
-It places systemd scripts for Consul, Nomad and Vault, but does not set them to start automatically on the resulting image. This provides the foundational components for a HashiStack, but does not dictate how you'll use the image.
-
 ## Prequisites
 
 ### [HashiCorp Packer](https://releases.hashicorp.com/packer/)
-This Packer configuration is written in HCL and has been tested on Packer 1.8.0.
+This Packer configuration is written in HCL and has been tested on Packer 1.8.2.
 
 ### Environment variables
-Set your AWS access credentials (`AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` environment variables). These credentials should have the ability to create AMI's.
+Set your AWS access credentials (`AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` environment variables). These credentials should have the ability to create machine images.
 
 ## Files
-[variables.pkr.hcl](variables.pkr.hcl) contains the [variables](https://packer.io/docs/configuration/from-1.5/variables.html) needed for our Packer run. Each has a sane default with the exception of `owner`. You can override the default by passing it via the `-var` command line argument or via a `.pkrvars.hcl` file. Please see the Packer documentation on [Input Variables](https://packer.io/docs/configuration/from-1.5/variables.html) for more information.
+[variables.pkr.hcl](variables.pkr.hcl) contains the [variables](https://www.packer.io/guides/hcl/variables) needed for our Packer run. Each has a sane default with the exception of `owner`. You can override the default by passing it via the `-var` command line argument or via a `.pkrvars.hcl` file. Please see the Packer documentation on [Input Variables](https://www.packer.io/guides/hcl/variables) for more information.
 
 [amazon-ebs.pkr.hcl](amazon-ebs.pkr.hcl) contains the code for building an [Amazon Machine Image (AMI)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html) on AWS. This is the only machine image that this repository currently builds.
 

@@ -1,6 +1,6 @@
 ################################################################################
 # AWS Specific
-variable "aws_region" {
+variable "aws_region_us_east_1" {
   type        = string
   description = "AWS Region in which to build image."
   default     = "us-east-1"
@@ -24,6 +24,84 @@ variable "aws_kms_key_id" {
   default     = ""
 }
 
+variable "source_ami_filter_virtualization_type" {
+  type        = string
+  description = "Source AMI virtualization type filter."
+  default     = "hvm"
+}
+
+variable "source_ami_filter_name" {
+  type        = string
+  description = "Source AMI name filter."
+  default     = "ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"
+}
+
+variable "source_ami_filter_rooot_device_type" {
+  type        = string
+  description = "Source AMI root device type"
+  default     = "ebs"
+}
+
+variable "source_ami_owners" {
+  type        = list(string)
+  description = "Source AMI owner. Default is Canonical."
+  default     = ["099720109477"]
+}
+
+variable "amazon_communicator" {
+  type        = string
+  description = "Communicator for Amazon builder."
+  default     = "ssh"
+}
+
+variable "amazon_ssh_username" {
+  type        = string
+  description = "SSH username for Amazon builder."
+  default     = "ubuntu"
+  #default     = "ec2-user"
+}
+
+variable "amazon_image_name" {
+  type        = string
+  description = "Value to use for naming Amazon image."
+  default     = "Ubuntu Focal (22.04) Golden Image"
+}
+
+################################################################################
+
+variable "os" {
+  type        = string
+  description = "OS."
+  default     = "ubuntu-jammy"
+}
+
+variable "os_version" {
+  type        = string
+  description = "OS Version."
+  default     = "22.04"
+}
+
+variable "prefix" {
+  type        = string
+  description = "Prefix for naming image"
+  default     = "hashistack"
+}
+
+################################################################################
+# HCP Packer
+
+variable "bucket_name" {
+  type        = string
+  description = "The image name when published to the HCP Packer registry. Will be overwritten if HCP_PACKER_BUCKET_NAME is set."
+  default     = "ubuntu-jammy-hashistack-slim"
+}
+
+variable "bucket_description" {
+  type        = string
+  description = "The image description. Useful to provide a summary about the image. The description will appear at the image's main page and will be updated whenever it is changed and a new build is pushed to the HCP Packer registry. Should contain a maximum of 255 characters."
+  default     = "This image is based on Ubuntu 22.04 and includes software HashiCorp, Docker, minikube, kubectl and other software."
+}
+
 ################################################################################
 
 variable "hashi_download_dir" {
@@ -44,78 +122,15 @@ variable "hashi_base_url" {
   default     = "https://releases.hashicorp.com"
 }
 
-variable "vault_version" {
-  type        = string
-  description = "HashiCorp Vault version."
-  default     = "1.10.3"
-}
-
-variable "consul_version" {
-  type        = string
-  description = "HashiCorp Consul version."
-  default     = "1.12.0"
-}
-
-variable "nomad_version" {
-  type        = string
-  description = "HashiCorp Nomad version."
-  default     = "1.3.0"
-}
-
-variable "terraform_version" {
-  type        = string
-  description = "HashiCorp Terraform version."
-  default     = "1.1.9"
-}
-
-variable "packer_version" {
-  type        = string
-  description = "HashiCorp Packer version."
-  default     = "1.8.0"
-}
-
-variable "consul-template_version" {
-  type        = string
-  description = "HashiCorp Consul-Template version."
-  default     = "0.29.0"
-}
-
 variable "envconsul_version" {
   type        = string
   description = "HashiCorp Envconsul version."
-  default     = "0.12.1"
-}
-
-variable "boundary_version" {
-  type        = string
-  description = "HashiCorp Boundary version."
-  default     = "0.8.0"
-}
-
-variable "waypoint_version" {
-  type        = string
-  description = "HashiCorp Waypoint version."
-  default     = "0.8.1"
+  default     = "0.13.0"
 }
 
 ################################################################################
-
-variable "os" {
-  type        = string
-  description = "OS."
-  default     = "ubuntu-focal"
+variable "tags" {
+  type        = map(string)
+  description = "Tags to apply to images."
+  default     = {}
 }
-
-variable "os_version" {
-  type        = string
-  description = "OS Version."
-  default     = "20.04"
-}
-
-variable "prefix" {
-  type        = string
-  description = "Prefix for naming image"
-  default     = "hashistack"
-}
-
-################################################################################

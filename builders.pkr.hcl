@@ -1,13 +1,19 @@
 build {
   hcp_packer_registry {
-    bucket_name = "ubuntu-hashistack-slim"
-    description = <<EOT
-This image is based on Ubuntu 20.04 and includes software HashiCorp, Docker, minikube, kubectl and other software.
-EOT
+    bucket_name = var.bucket_name
+    description = var.bucket_description
+
+    bucket_labels = {
+      "os" = "linux"
+    }
+
+    build_labels = {
+      "build-time" = timestamp()
+    }
   }
 
   sources = [
-    "source.amazon-ebs.hashistack"
+    "source.amazon-ebs.hashistack-aws-us-east-1"
   ]
 
   provisioner "shell" {
@@ -53,7 +59,7 @@ EOT
 
   provisioner "shell" {
     inline = [
-      "sudo bash /tmp/hashi_install.sh ${var.hashi_download_dir} ${var.bin_dir}     ${var.hashi_base_url} envconsul                    ${var.envconsul_version}",
+      "sudo bash /tmp/hashi_install.sh ${var.hashi_download_dir} ${var.bin_dir} ${var.hashi_base_url} envconsul ${var.envconsul_version}",
     ]
   }
 
